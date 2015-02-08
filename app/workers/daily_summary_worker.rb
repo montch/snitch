@@ -11,7 +11,7 @@ class DailySummaryWorker
     init_event_holders
     get_events
 
-    SummaryMailer.send_summary(@txtout_events, @resmon_events, @repos).deliver
+    SummaryMailer.send_summary(@txtout_events, @resmon_events, @repos, @totals).deliver
   end
 
 end

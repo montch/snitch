@@ -1,7 +1,31 @@
-<ul>
-<% @repos.each do |e|  %>
-      <li>
-      <%= e.name %> : <%= e.id %>
-      </li>
+<% if @totals.blank? %>
+    <p> No one had any github activity. That does not mean no one os working, it just means nothing has been committed to github.</p>
+<% else %>
+    <% @totals.each do |k, v| %>
+        <p> <%= " #{k} contributed a total of #{v} lines of new or changed code in total " %>  </p>
+    <% end %>
 <% end %>
+<br>
+<br>
+<ul>
+  <% if @txtout.present? %>
+      <% @txtout.each do |e| %>
+          <li>
+            <%= e %>
+          </li>
+      <% end %>
+  <% else %>
+      <li> No Txtout activity occured</li>
+  <% end %>
+</ul>
+<ul>
+  <% if @resmon.present? %>
+      <% @resmon.each do |e| %>
+          <li>
+            <%= e %>
+          </li>
+      <% end %>
+  <% else %>
+      <li> No Resume Monster activity occured</li>
+  <% end %>
 </ul>
