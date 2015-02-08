@@ -19,4 +19,5 @@ gem "sidekiq-cron", "~> 0.2.0"
 group :test, :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'letter_opener'
 end
