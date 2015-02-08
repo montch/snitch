@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: snitch_development
+
+remote_development:
+  adapter: postgresql
+  encoding: unicode
+  database: snitch_development
+
+test: &test
+  adapter: postgresql
+  encoding: unicode
+  database: snitch_test
+  min_messages: WARNING
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: snitch_production
+
+cucumber:
+  <<: *test

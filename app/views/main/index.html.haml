@@ -1,0 +1,21 @@
+%ul
+-@repos.each do |r|
+  %li= " #{r.name} : #{r.id} "
+-#- @txtout.events.each do |e|
+-#  %li= e.id
+-#-@events.each do |e|
+-#  - e.each do |s|
+-#    %li= s
+
+- @txtout_events.each do |e|
+  %li= e
+
+
+- @etypes.each do |e|
+  %li= e
+
+%p
+- @totals.each do  |k,v|
+  %p
+    = " #{k} contributed a total of #{v} lines of new or changed code in total "
+
