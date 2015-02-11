@@ -1,31 +1,48 @@
+<p> You are watching the projects: <b>TxtOut</b> and <b>ResumeBot</b></p>
+
 <% if @totals.blank? %>
-    <p> No one had any github activity. That does not mean no one os working, it just means nothing has been committed to github.</p>
+    <p> No one had any github activity. That does not mean no one is working, it just means nothing has been committed
+      to github.</p>
 <% else %>
     <% @totals.each do |k, v| %>
-        <p> <%= " #{k} contributed a total of #{v} lines of new or changed code in total " %>  </p>
+        <p> <%= " #{k} contributed a total of #{v} lines of code total." %>  </p>
     <% end %>
 <% end %>
-<br>
-<br>
+
 <ul>
   <% if @txtout.present? %>
-      <% @txtout.each do |e| %>
-          <li>
-            <%= e %>
-          </li>
-      <% end %>
+      <ul>
+        <li> TxtOut changes:</li>
+        <ul>
+          <% @txtout.each do |e| %>
+              <li>
+                <%= e %>
+              </li>
+          <% end %>
+        </ul>
+      </ul>
   <% else %>
-      <li> No Txtout activity occured</li>
+      <ul>
+        <li> No Txtout activity occured</li>
+      </ul>
   <% end %>
 </ul>
 <ul>
   <% if @resmon.present? %>
-      <% @resmon.each do |e| %>
-          <li>
-            <%= e %>
-          </li>
-      <% end %>
+      <ul>
+        <li> ResumeMonster changes:</li>
+
+        <ul>
+          <% @resmon.each do |e| %>
+              <li>
+                <%= e %>
+              </li>
+          <% end %>
+        </ul>
+      </ul>
   <% else %>
-      <li> No Resume Monster activity occured</li>
+      <ul>
+        <li> No Resume Monster activity occured</li>
+      </ul>
   <% end %>
 </ul>

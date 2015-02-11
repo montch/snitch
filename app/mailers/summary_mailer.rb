@@ -8,7 +8,7 @@ class SummaryMailer < ActionMailer::Base
     @resmon = resmon
     @totals = totals
 
-    mail :to =>  'montch@gmail.com', :subject => "Summary Mailer" do |format|
+    mail :to =>  'jen@ignitewithus.com, mark@ignitewithus.com', :subject => "Snitch Summary Mailer", :from => "snitch@ignitewithus.com" do |format|
       format.html
     end
 

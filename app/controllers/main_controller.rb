@@ -9,6 +9,7 @@ class MainController < ApplicationController
     get_watched_repos
     init_event_holders
     get_events
+    get_stats
   end
 
 end
