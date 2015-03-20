@@ -127,7 +127,8 @@ module Snitchlib
   end
 
   def init_client
-    @client = Octokit::Client.new(:netrc => true) # from ~/.netrc
+ #   @client = Octokit::Client.new(:netrc => true) # from ~/.netrc
+    @client = Octokit::Client.new(:access_token => Rails.application.config.github_access_token)
     @client.default_media_type = 'application/vnd.github.moondragon+json' # tells github to use the newest api changes
     @client.auto_paginate = true
   end

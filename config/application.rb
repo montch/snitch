@@ -28,5 +28,6 @@ module Snitch
     config.autoload_paths += %W(#{config.root}/lib)
 
     config.github_org = ENV['GITHUB_ORG_NAME']
+    config.github_access_token =   ENV['GITHUB_ACCESS_TOKEN']
   end
 end
