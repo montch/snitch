@@ -21,4 +21,3 @@ end
 
 
 
-Sidekiq::Cron::Job.create( name: 'GetMemberEventsWorker', cron: '*/2 * * * *', klass: 'GetMemberEventsWorker')
