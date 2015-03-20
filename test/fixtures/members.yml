@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team_id: 1
+  email: MyString
+  first_name: MyString
+  last_name: MyString
+  github_login: MyString
+  deactivated: false
+
+two:
+  team_id: 1
+  email: MyString
+  first_name: MyString
+  last_name: MyString
+  github_login: MyString
+  deactivated: false

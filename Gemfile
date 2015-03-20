@@ -13,11 +13,12 @@ gem 'haml-rails'
 gem 'octokit'
 gem 'netrc'
 gem 'sidekiq'
-gem "sidekiq-cron", "~> 0.2.0"
+
 
 
 group :test, :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'letter_opener'
+  gem 'dotenv-rails'
 end

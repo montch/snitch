@@ -1,6 +1,9 @@
 module Snitchlib
   # since we want to share these across controllers and workers...
 
+
+
+
   def get_events
     # distinct events from last feed
     # ForkEvent
@@ -10,7 +13,7 @@ module Snitchlib
     # CreateEvent
     # IssueCommentEvent
     total = 0;
-    @events = @client.organization_events('ignitewithus')
+    @events = @client.organization_events(org_name)
     @events.each do |e|
 
       # this is just here so I can get an idea of what events we are using
@@ -20,7 +23,7 @@ module Snitchlib
         if e[:type] == "PushEvent" && e[:created_at] > @since
 
           e[:payload][:commits].each do |c|
-           # @shas.push({e[:repo][:id] => c[:sha]})
+            # @shas.push({e[:repo][:id] => c[:sha]})
             total = total + get_sha_stats(e[:repo][:id], c[:sha])
           end
           dest = determine_event_holder(e)
@@ -29,6 +32,12 @@ module Snitchlib
       end
     end
   end
+
+  def org_name
+    org =init_org
+    org.name
+  end
+
 
   def get_sha_stats(repo_id, sha)
     @repos.each do |r|
@@ -104,7 +113,7 @@ module Snitchlib
     end
   end
 
-  # TODO - this needs to be made smarter in conjunction woth the ones above
+  # TODO - this needs to be made smarter in conjunction with the ones above
   def init_event_holders
     @txtout_events = Array.new
     @resmon_events = Array.new
@@ -128,5 +137,33 @@ module Snitchlib
     @since = DateTime.now - 1
   end
 
+  def get_members
+    init_org if @org.blank?
+    @client.organization_members(@org.name)
+  end
 
+  # Just creating 1 team for now, leaving room to flesh this out if needed
+  # called from init_members.rake for now
+  def init_teams
+    init_org if @org.blank?
+    @team = Team.where('name is NOT NULL').first_or_create(name: 'development', org_id: @org.id)
+  end
+
+  #just doing 1 org at the moment
+  def init_org
+    @org = Org.where('name is NOT NULL').first_or_create(name: Rails.application.config.github_org)
+  end
+
+
+  def get_org_events
+    resp = @client.organization_events(org_name)
+    log_this
+    resp
+  end
+
+
+  def log_this
+    return if @client.blank?
+    Request.create(request: @client.last_response.headers[:link], response: @client.last_response.to_json, caller: caller_locations(1,1)[0].label  )
+  end
 end
