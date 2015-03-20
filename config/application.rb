@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 
 
 
-Dotenv.load
+Dotenv.load unless Rails.env.production?
 
 
 module Snitch
