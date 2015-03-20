@@ -1,3 +1,25 @@
 == README
 
-this needs a lot of work
+	notes as of 3/20/15
+
+	- set up user w/ org access as an ENV (or dotenv) var:
+	GITHUB_ORG_NAME = "github org name"
+	GITHUB_ACCESS_TOKEN = "40 character token"
+
+	- db:setup
+	- db:migrate
+	- db:init_members
+
+	on heroku, add heroku scheduler and set up a task to run
+	"rake snitch:get_events"
+
+
+	progress:
+	    initial - setup as an email service, but wasnt really needed, changed to be an event aggregator so we can eventually link it in with hubot
+
+	    3/20/15 - Events are being created and and stored in events table. Requests are also being logged in requests.
+
+	todo:
+	    - UI for member management
+	    - API for hubot
+
