@@ -165,6 +165,6 @@ module Snitchlib
 
   def log_this
     return if @client.blank?
-    Request.create(request: @client.last_response.headers[:link], response: @client.last_response.to_json, caller: caller_locations(1,1)[0].label  )
+    Request.create(request: @client.last_response.headers[:link], response: @client.last_response.as_json, caller: caller_locations(1,1)[0].label  )
   end
 end

@@ -13,6 +13,7 @@ gem 'haml-rails'
 gem 'octokit'
 gem 'netrc'
 gem 'sidekiq'
+gem 'utf8-cleaner'
 
 
 
@@ -21,4 +22,5 @@ group :test, :development do
   gem 'binding_of_caller'
   gem 'letter_opener'
   gem 'dotenv-rails'
+  gem 'annotate', '~> 2.6.6'
 end

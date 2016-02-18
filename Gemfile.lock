@@ -28,6 +28,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
+    annotate (2.6.10)
+      activerecord (>= 3.2, <= 4.3)
+      rake (~> 10.4)
     arel (5.0.1.20140414130214)
     better_errors (2.1.0)
       coderay (>= 1.0.0)
@@ -159,11 +162,14 @@ GEM
     unicorn-rails (2.2.0)
       rack
       unicorn
+    utf8-cleaner (0.2.1)
+      activesupport
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate (~> 2.6.6)
   better_errors
   binding_of_caller
   dotenv-rails
@@ -179,3 +185,4 @@ DEPENDENCIES
   sidekiq
   uglifier (>= 1.3.0)
   unicorn-rails
+  utf8-cleaner
